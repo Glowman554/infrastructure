@@ -105,3 +105,11 @@ func DeleteContainer(container Container) error {
 	}
 	return utils.Execute("sudo docker rm "+container.Name, "/", false)
 }
+
+func DeleteImage(container Container) error {
+	slog.Info("deleting image " + container.Image)
+
+	utils.Execute("sudo docker image rm "+container.Image, "/", false)
+
+	return nil
+}
